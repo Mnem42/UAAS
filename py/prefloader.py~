@@ -1,0 +1,76 @@
+import json
+import ipaddress
+import os.path
+import re
+import subprocess
+from ping3 import ping, verbose_ping
+from urllib import request
+
+json_file="../../targets.json"
+
+def load_file(print_status,name):
+    if(not os.path.isfile(name)):
+        if(print_status):
+            print("✘        File not found");
+        raise FileNotFoundError(name+" does not exist");
+    if(print_status):
+        print("✓       File loaded")
+
+    data={}
+    with open(json_file) as json_data:
+        try:
+            data = json.load(json_data)
+        except ValueError as e:
+            if(print_status):
+                print("✘       JSON invalid")
+            raise ValueError("JSON invalid")
+        if(print_status):
+            print("✓       JSON loaded")
+    return data;
+
+def load_ipaddrs(data,print_details):
+    index=0;
+    iptable=[]
+    for i in data['targets']:
+        valid=True
+        ipexists=True
+        try:
+            ipaddress.ip_address(i["ip"])
+            # legal
+        except ValueError:
+            valid=False
+            ipexists=False
+            # Not legal
+
+        if(ping(i["ip"])>2):
+            ipexists=False
+            valid=True
+
+        index+=1
+        if(valid):
+            if(print_details):
+                print ("    ",str(index).ljust(2),
+                       "ip: ", i['ip'].ljust(15),
+                       "name: ", i['displayname'])
+            iptable+=i
+            continue
+        print(valid)
+        if(not ipexists):
+            if(print_details):
+                print("⚠ CN",str(index).ljust(2),
+                      "ip: ", i['ip'].ljust(15),
+                      "name: ", i['displayname'])
+            continue
+        if(not valid):
+            if(print_details):
+                print("⚠ IP",str(index).ljust(2),
+                      "ip: ", i['ip'].ljust(15),
+                      "name: ", i['displayname'])
+            continue
+    if(print_details):
+        print("✓       Data loaded")
+
+def load_checklists():
+    pass
+
+load_ipaddrs(load_file(True,json_file),True)
