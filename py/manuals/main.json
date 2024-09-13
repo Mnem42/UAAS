@@ -1,0 +1,14 @@
+[
+    {
+	"type":"h1",
+	"text":"UAAS MAIN MANUAL"
+    },
+    {
+        "type":"h2",
+	"text":"Introduction"
+    },
+    {
+        "type":"p",
+	"text":"This is an autopilot for KSP kRPC, designed for atmospheric aircraft. This manual details how to use the terminal interface in the server app properly, how to use the GUI interface in KSP, and gives an overview of commands and actions in both."
+    }
+]
