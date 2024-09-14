@@ -2,14 +2,15 @@ import json
 import textwrap
 
 colourmap = {
-    "p":"\033[96;4m",
-    "h1":"\033[1;4;96m",
+    "p":"",
+    "h1":"\033[96;4;1m",
     "h2":"\033[96m"
 }
-
+    
 def load_manual(dmmy):
     with open("manuals/main_manual.txt") as text:
         return text.read()
+    
 
 def load_manual_json(indents,wrap_width):
     json_parsed=[]
@@ -25,7 +26,7 @@ def load_manual_json(indents,wrap_width):
                 replace_whitespace=False
             )
             if (len(wrapped_text_arr)==1):
-                parsed_text+="\n"+indents+colourmap[i["type"]]+wrapped_text_arr[0]+"\033[0m\n\n"
+                parsed_text+="\n"+indents+colourmap[i["type"]]+wrapped_text_arr[0]+"\033[0m\n"
                 continue
             else:
                 wrapped_text=indents+("\n"+indents).join(wrapped_text_arr)
