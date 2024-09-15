@@ -1,0 +1,6 @@
+{
+    "commands":{
+        "enable-alternate-exit":true,
+	"default-ncon":true
+    }
+}

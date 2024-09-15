@@ -26,7 +26,7 @@ def load_manual_json(indents,wrap_width):
                 replace_whitespace=False
             )
             if (len(wrapped_text_arr)==1):
-                parsed_text+="\n"+indents+colourmap[i["type"]]+wrapped_text_arr[0]+"\033[0m\n"
+                parsed_text+="\n\n\n"+indents+colourmap[i["type"]]+wrapped_text_arr[0]+"\033[0m\n\n"
                 continue
             else:
                 wrapped_text=indents+("\n"+indents).join(wrapped_text_arr)
