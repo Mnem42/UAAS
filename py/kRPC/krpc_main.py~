@@ -1,0 +1,6 @@
+import krpc
+import multiprocessing
+
+def start(ip):
+    krpc.connect(name="UAAS", address=ip)
+    print(conn.krpc.get_status().version)
