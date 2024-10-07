@@ -10,5 +10,13 @@
     {
         "type":"p",
 	"text":"This is an autopilot for KSP kRPC, designed for atmospheric aircraft. This manual details how to use the terminal interface in the server app properly, how to use the GUI interface in KSP, and gives an overview of commands and actions in both."
+    },
+    {
+        "type":"h2",
+	"text":"UI"
+    },
+    {
+        "type":"p",
+	"text":"The command \"manual\" displays a manual, the command \"terminate\" terminates the client, with confirmation (unless the -ncon switch is used or default-ncon is set to true in the configs). \"exit\" terminates the client without confirmation, if enable-alternate-exit is set to true in the configs."
     }
 ]

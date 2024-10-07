@@ -1,9 +1,0 @@
-enum 
-class checklist:
-    itemtype   = "undefined"
-    itemaction = "undefined"
-
-    def load_checklist_item(rawdata):
-        for i in rawdata:
-            
-    

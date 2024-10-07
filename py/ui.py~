@@ -1,2 +1,0 @@
-def draw_hr(length):
-    print("\033[90m"+"─"*length+"\033[0m")
